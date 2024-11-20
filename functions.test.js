@@ -1,7 +1,9 @@
 const functions = require('./functions');
 
-beforeEach(() => initDatabase());
-afterEach(() => closeDatabase());
+beforeAll(() => initDatabase());
+afterAll(() => closeDatabase());
+// beforeEach(() => initDatabase());
+// afterEach(() => closeDatabase());
 
 const initDatabase = () => console.log("Database Initialized.........")
 const closeDatabase = () => console.log("Database Closed.........")
@@ -79,3 +81,11 @@ test('User fetched name should be Leanne Graham', async () => {
 //     expect(data.name).toEqual('Leanne Graham');
 //   })
 // })
+
+
+
+
+// "scripts": {
+//   "test": "jest",
+//   "testwatch": "jest --watchAll"
+// },
