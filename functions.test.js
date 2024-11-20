@@ -1,5 +1,11 @@
 const functions = require('./functions');
 
+beforeEach(() => initDatabase());
+afterEach(() => closeDatabase());
+
+const initDatabase = () => console.log("Database Initialized.........")
+const closeDatabase = () => console.log("Database Closed.........")
+
 test('adds 1 + 2 equal to 3', () => {
   expect(functions.add(1,2)).toBe(3);
 });
@@ -61,9 +67,15 @@ test('Admin should be in username', () => {
 
 // Working with async data
 
-test('User Fetch name should be Leanne Graham', () => {
+test('User fetched name should be Leanne Graham', async () => {
   expect.assertions(1);
-  return functions.fetchUser().then(data => {
-    expect(data.name).toEqual('Leanne Graham');
-  })
+  const data = await functions.fetchUser();
+  expect(data.name).toEqual('Leanne Graham');
 })
+
+// test('User Fetch name should be Leanne Graham', () => {
+//   expect.assertions(1);
+//   return functions.fetchUser().then(data => {
+//     expect(data.name).toEqual('Leanne Graham');
+//   })
+// })
